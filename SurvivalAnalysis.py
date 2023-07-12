@@ -93,7 +93,7 @@ if way == 'CSVから読み取り':
                 この例ではコントロールの1匹目は10日目で死亡、2匹目から4匹目は14日まで生存、処置Aの1匹目は5日目以降追跡不能（脱走など）を意味します。
                 ''')
 
-    with open('../../Downloads/sample.csv') as f:
+    with open('./sample.csv') as f:
         st.download_button('サンプルCSVのダウンロード', f, 'sample.csv', "text/csv")
     st.markdown('---')
     st.write('')
