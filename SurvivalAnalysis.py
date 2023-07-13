@@ -56,12 +56,15 @@ if way == '直接入力':
         group_split = [s.strip() for s in group_split if s.strip() != '']
         time_split = [float(s.strip()) for s in time_split if s.strip() != '']
         event_split = [float(s.strip()) for s in event_split if s.strip() != '']
+        try:
+            df = pd.DataFrame({
+                'group': group_split,
+                'time': time_split,
+                'event': event_split
+            })
+        except ValueError:
+            st.write('各データは同じ長さ・数である必要があります.')
 
-        df = pd.DataFrame({
-            'group': group_split,
-            'time': time_split,
-            'event': event_split
-        })
 
 if way == 'CSVから読み取り':
     st.markdown('''
@@ -104,11 +107,7 @@ if way == 'CSVから読み取り':
         df = pd.read_csv(uploaded_file)
 
 if df is not None:
-    try:
-        st.dataframe(df)
-    except ValueError:
-        st.write('各データは同じ長さ・数である必要があります.')
-
+    st.dataframe(df)
 
     st.write('このデータで間違いなければ解析に進んでください.')
     interval = st.checkbox('グラフに信頼区間を表示する.')
