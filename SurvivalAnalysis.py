@@ -110,7 +110,8 @@ if way == 'CSVから読み取り':
 if df is not None:
     st.dataframe(df)
 
-    st.write('このデータで間違いなければ解析に進んでください.入力に不足や誤りがあるデータは削除されています.')
+    st.write('このデータで間違いなければ解析に進んでください.'  
+             '入力に不足や誤りがあるデータは削除されています.')
     interval = st.checkbox('グラフに信頼区間を表示する.')
     censoring = st.checkbox('グラフに検閲マークを表示する.')
     button = st.button('解析')
