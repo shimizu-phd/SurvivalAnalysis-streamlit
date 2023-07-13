@@ -63,7 +63,7 @@ if way == '直接入力':
                 'event': event_split
             })
         except ValueError:
-            st.write('各データは同じ長さ・数である必要があります.')
+            st.write(f':red[エラー：各データは同じ長さ・数である必要があります.]')
 
 
 if way == 'CSVから読み取り':
