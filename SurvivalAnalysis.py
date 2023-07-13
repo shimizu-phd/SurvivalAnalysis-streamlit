@@ -104,11 +104,15 @@ if way == 'CSVから読み取り':
         df = pd.read_csv(uploaded_file)
 
 if df is not None:
-    st.dataframe(df)
+    try:
+        st.dataframe(df)
+    except ValueError:
+        st.write('各データは同じ長さ・数である必要があります.')
+
 
     st.write('このデータで間違いなければ解析に進んでください.')
-    interval = st.checkbox('グラフに信頼区間を表示する')
-    censoring = st.checkbox('グラフに検閲マークを表示する')
+    interval = st.checkbox('グラフに信頼区間を表示する.')
+    censoring = st.checkbox('グラフに検閲マークを表示する.')
     button = st.button('解析')
     if button:
         kmf = KaplanMeierFitter()
