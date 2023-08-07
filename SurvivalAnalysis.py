@@ -121,6 +121,7 @@ if df is not None:
 
         groups = df.iloc[:, 0].unique()
         fig, axes = plt.subplots()
+        axes.set_ylim(-0.1, 1.1)
         for group in groups:
             group_data = df[df.iloc[:, 0] == group]
             kmf.fit(group_data.iloc[:, 1], group_data.iloc[:, 2], label=group)
